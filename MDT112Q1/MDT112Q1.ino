@@ -58,7 +58,7 @@ void loop()
         count=count*2;
         timedelay=timedelay/2;
         Serial.println("Faster X 2 (Current Speed : X" + String(count) + ")");
-        tone(8,400,100);
+        tone(8,400,100); 
     }
     }
 }
