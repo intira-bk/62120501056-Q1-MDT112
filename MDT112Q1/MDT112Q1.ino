@@ -18,104 +18,47 @@ void setup()
     tone(8,400,100);
 }
 
-int x = 0;
+int light =3;
+int count=1;
+int timedelay=100;//เวลาดีเลย์
 void loop()
 {
-    digitalWrite(2,1);
-    delay(100);
-    digitalWrite(2,0);
-    delay(100);
-    digitalWrite(3,1);
-    delay(100);
-    digitalWrite(3,0);
-    delay(100);
-    digitalWrite(4,0);
-    delay(100);
-    digitalWrite(4,1);
-    delay(100);
-    digitalWrite(4,0);
-    delay(100);
-    digitalWrite(5,1);
-    delay(100);
-    digitalWrite(5,0);
-    delay(100);
-    digitalWrite(6,1);
-    delay(100);
-    digitalWrite(6,0);
-    delay(100);
-    digitalWrite(7,1);
-    delay(100);
-    digitalWrite(7,0);
-    delay(100);
-    digitalWrite(8,1);
-    delay(100);
-    digitalWrite(8,0);
-    delay(100);
-    digitalWrite(9,1);
-    delay(100);
-    digitalWrite(9,0);
-    delay(100);
-    digitalWrite(10,1);
-    delay(100);
-    digitalWrite(10,0);
-    delay(100);
-    digitalWrite(11,1);
-    delay(100);
-    digitalWrite(11,0);
-    delay(100);
-    digitalWrite(12,1);
-    delay(100);
-    digitalWrite(12,0);
-    delay(100);
-    digitalWrite(13,1);
-    delay(100);
-    digitalWrite(13,0);
+    for (int light=3; light<=13; light++)//ไฟขึ้น 
+    {
+    if (light==8) 
+    {
+        digitalWrite(light,0);
+        continue;
+    }
+    digitalWrite(light,1);
+    delay(timedelay);
+    digitalWrite(light,0);
+    if(digitalRead(2)==0)//เร่ง
+    {
+        count=count*2;
+        timedelay=timedelay/2;
+        Serial.println("Faster X 2 (Current Speed : X" + String(count) + ")");
+        tone(8,400,100);
+    }
+    }
 
-    delay(100);
 
-    digitalWrite(12,1);
-    delay(100);
-    digitalWrite(12,0);
-    delay(100);
-    digitalWrite(11,1);
-    delay(100);
-    digitalWrite(11,0);
-    delay(100);
-    digitalWrite(10,1);
-    delay(100);
-    digitalWrite(10,0);
-    delay(100);
-    digitalWrite(9,1);
-    delay(100);
-    digitalWrite(9,0);
-    delay(100);
-    digitalWrite(8,1);
-    delay(100);
-    digitalWrite(8,0);
-    delay(100);
-    digitalWrite(7,1);
-    delay(100);
-    digitalWrite(7,0);
-    delay(100);
-    digitalWrite(6,1);
-    delay(100);
-    digitalWrite(6,0);
-    delay(100);
-    digitalWrite(5,1);
-    delay(100);
-    digitalWrite(5,0);
-    delay(100);
-    digitalWrite(4,1);
-    delay(100);
-    digitalWrite(4,0);
-    delay(100);
-    digitalWrite(3,1);
-    delay(100);
-    digitalWrite(3,0);
-    delay(100);
-    digitalWrite(2,1);
-    delay(100);
-    digitalWrite(2,0);
-    delay(100);
-    
+    for (int light=13; light>=3; light--) //ไฟลง
+    {
+    if (light==8) 
+    {
+        digitalWrite(light,0);
+        continue;
+    }
+    digitalWrite(light,1);
+    delay(timedelay);
+    digitalWrite(light,0);
+    if(digitalRead(2)==0)//เร่ง
+    {
+        count=count*2;
+        timedelay=timedelay/2;
+        Serial.println("Faster X 2 (Current Speed : X" + String(count) + ")");
+        tone(8,400,100);
+    }
+    }
 }
